@@ -1,0 +1,84 @@
+<style type="text/css">
+	*{
+		font-family: "微软雅黑";
+	}
+	h1{
+		text-align: center;
+		font-family: "微软雅黑";
+	}
+	fieldset{
+		width: 400px;
+		margin:0 auto;
+	}
+	font{
+		color: #foo;
+	}
+	#pp{
+		display: none;
+	}
+	#ww{
+		margin-left:35.9% ;
+	}
+</style>
+<body>
+	<h1>请填写个人信息</h1>
+	<article>
+		<fieldset id="base">
+			<legend>基本信息</legend>
+			<form id="man">
+				姓名<input type="text" required="required" placeholder="请输入姓名"/>*<br />
+				年龄<input type="number" value="20" />
+		</fieldset><br />
+		<fieldset>
+			<legend>
+				<font>你想在哪里收到邮件？</font>
+			</legend>
+					邮箱<input type="email" id="url" required="required" list="urll" autocomplete="on" placeholder="请输入邮箱"/>*<p id="pp">邮箱格式错误</p>
+					<datalist id="urll">
+						<option class="op"></option><option class="op"></option>
+						<option class="op"></option><option class="op"></option>
+						<option class="op"></option>
+					</datalist>
+		</fieldset><br />
+		<fieldset>
+			<legend>收入情况</legend>
+			月收入<input type="search" autocomplete="on" list="money" value="20k+"/><br />
+			<datalist id="money">
+				<option>10k-</option><option>10k+</option><option>20k+</option><option>30k+</option><option>40k+</option>
+			</datalist>
+			银行卡<input type="number" name="yinhuang" />
+			有效期<input type="date" />
+		</fieldset><br />
+		<fieldset>
+			<legend>选取提交文件</legend>
+			文件<input type="file" />
+			</form>
+		</fieldset><br />
+			<input type="submit" id="ww" form="man"/>
+
+	</article>
+</body>
+<script type="text/javascript">
+	var pp = document.getElementById("pp");
+	var url = document.getElementById("url");
+	var emil = document.getElementsByClassName("op");
+	var data = document.getElementById(urll);
+	var arr = ["@qq.com","@163.com","@gmail.com","@yahoo.com","@162.com"]
+	var zhengze = /@{1,}/;
+	var zhengze1 = /com\S{1,}/;
+	url.oninput = function(){
+		if(zhengze1.test(url.value)){
+			pp.style.cssText = "display: block;"
+		}
+		else{
+			pp.style.cssText = "display: none;"
+		}
+		if(zhengze.test(url.value)){
+		}
+		else{
+			for(var i = 0;i<emil.length;i++){
+				emil[i].value=url.value+arr[i]
+			}	
+		}
+	}
+</script>
