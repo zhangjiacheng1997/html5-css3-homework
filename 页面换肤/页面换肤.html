@@ -1,0 +1,109 @@
+<style>
+	*{
+		font-family: "微软雅黑";
+		margin: 0 auto;
+	}
+	h1{
+		color: #ff0000;
+	}
+	fieldset{
+		width: 500px;
+	}
+	legend{
+		text-align: center;
+	}
+	#color{
+		border:2px solid #CDCD9A;
+		width: 400px;
+		height: 60px;
+	}
+	.red{
+		width: 35px;
+		height: 35px;
+		margin-top: 20px;
+		margin-left: 10px;
+	}
+	#txt{
+		border:0px solid #CDCD9A;
+		width: 400px;
+		height: 60px;margin-top: 20px;
+	}
+	p{
+		background-color:;
+	}
+</style>
+<script>
+	window.onload = function(){
+		var ky = localStorage.getItem("key");
+		var txt = document.getElementById('txt');
+		switch(ky){
+			case '1':
+				txt.style.cssText  = "background-color: #FF0000;"
+				break;
+			case '2':
+				txt.style.cssText  = "background-color: #ca8eff;"
+				break;
+			case '3':
+				txt.style.cssText  = "background-color: #FFff00;"
+				break;
+			case '4':
+				txt.style.cssText  = "background-color: #28ff28;"
+				break;
+			case '5':
+				txt.style.cssText  = "background-color: #CDCD9A;"
+				break;
+			case '6':
+				txt.style.cssText  = "background-color: #DEDEBE;"
+				break;
+		}
+		
+		for(var i = 1;i<7;i++){
+			(function(i){
+				var col = 'red'+i
+				var coll = document.getElementById(col);
+				var bun = document.getElementById(col);
+				coll.onclick = function(){
+					if(col == 'red1'){
+						txt.style.cssText  = "background-color: #FF0000;"
+						localStorage.setItem("key", 1);
+					}
+					else if(col == 'red2'){
+						txt.style.cssText = "background-color: #ca8eff;"
+						localStorage.setItem("key", 2);
+					}
+					else if(col == 'red3'){
+						txt.style.cssText = "background-color: #FFff00;"
+						localStorage.setItem("key", 3);
+					}
+					else if(col == 'red4'){
+						txt.style.cssText = "background-color: #28ff28;"
+						localStorage.setItem("key", 4);
+					}
+					else if(col == 'red5'){
+						txt.style.cssText = "background-color: #CDCD9A;"
+						localStorage.setItem("key", 5);
+					}
+					else if(col == 'red6'){
+						txt.style.cssText = "background-color: #DEDEBE;"
+						localStorage.setItem("key", 6);
+					}
+				}
+			}(i))
+		}
+		
+	}
+</script>
+<fieldset>
+	<legend><h1>页面换肤</h1></legend>
+	<article id="color">
+		<button id="red1" class="red" style="background-color: #FF0000 ;"></button>
+		<button id="red2" class="red" style="background-color: #ca8eff ;"></button>
+		<button id="red3" class="red" style="background-color: #FFff00 ;"></button>
+		<button id="red4" class="red" style="background-color: #28ff28 ;"></button>
+		<button id="red5" class="red" style="background-color: #CDCD9A ;"></button>
+		<button id="red6" class="red" style="background-color: #DEDEBE ;"></button>
+	</article>
+	<section id="txt">
+		<p>LocalStorage将数据保存在客户端本地的硬件设备中，即使浏览器被关闭了该数据，依然存在下次打开浏览器访问网站时依然可以使用/p>
+	</section>
+</fieldset>
