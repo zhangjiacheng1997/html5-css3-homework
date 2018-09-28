@@ -1,0 +1,35 @@
+<style type="text/css">
+	*{
+		font-family: "微软雅黑";
+		font-size: 1.2em;
+		margin: 0 auto;
+		text-align: center;
+	}
+	#img{
+		background-color: #CCCCCC;
+		width: 400px;
+		height: 400px;
+		
+	}
+</style>
+<article id="img">
+	<p>拖拽图片到此上传</p>
+</article>
+<script>
+	window.onload = function(){
+		var img = document.getElementById('img');
+		img.ondragover = function(e){
+			e.preventDefault();
+		}
+		img.ondrop = function(e){
+			e.preventDefault();
+			var file1 = e.dataTransfer.files[0];//dataTransfer对象存储通过拖拽到浏览器的数据
+			var fs = new FileReader;
+			fs.readAsDataURL(file1);//将文件转换成地址形式并存放于fs.result，没有返回值
+			fs.onload = function(){
+				img.innerHTML += '<img src='+this.result+' alt="">';
+			}
+			
+		}
+	}
+</script>
