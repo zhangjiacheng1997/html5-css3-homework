@@ -59,7 +59,7 @@
 					context2.rotate(-0.5*Math.PI);
 					context2.beginPath();
 					context2.moveTo(0,0);
-					context2.lineTo(Math.cos(minute/30*Math.PI)*80,
+					context2.lineTo(Math.cos((minute)/30*Math.PI)*80,
 					Math.sin(minute/30*Math.PI)*80);
 					context2.lineWidth = 2;
 					context2.strokeStyle = "#7F9DB9"
@@ -87,13 +87,15 @@
 				context1.lineWidth = 2;
 				context1.stroke();
 				context1.closePath();
-				
+				var minute1 = minute + 1;
+				var hour1 = hour + 1;
+				console.log(minute1)
 				setInterval(()=>{
 					context2.clearRect(-80,-40,200,200);
 					context2.beginPath();
 					context2.moveTo(0,0);
-					context2.lineTo(Math.cos(minute/30*Math.PI)*75,
-					Math.sin(minute/30*Math.PI)*75);
+					context2.lineTo(Math.cos(minute1/30*Math.PI)*75,
+					Math.sin(minute1/30*Math.PI)*75);
 					context2.lineWidth = 2;
 					context2.rotate(6/180*Math.PI);
 					context2.strokeStyle = "#7F9DB9"
@@ -104,8 +106,8 @@
 					context3.beginPath();
 					context3.rotate(1/6*Math.PI);
 					context3.moveTo(0,0);
-					context3.lineTo(Math.cos(hour/6*Math.PI)*40,
-					Math.sin(hour/6*Math.PI)*40);
+					context3.lineTo(Math.cos(hour1/6*Math.PI)*40,
+					Math.sin(hour1/6*Math.PI)*40);
 					
 					context3.lineWidth = 4;
 					
