@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+			}
+			#center{
+				height: 100vh;
+				width: 95%;
+				
+				margin: 0 auto;
+				overflow: hidden;
+				display: grid;
+				grid-template-columns:repeat(5,1fr);
+			}
+			.child{
+				margin-top: -250px;
+				height: 260px;
+				width: 120px;
+				background-color: darkblue;
+				position: absolute;
+			}
+			.locus{background-color: aqua;
+				
+				height:100%;
+				overflow: hidden;
+				display: inline;
+				display: flex;
+				justify-content: center;
+			}
+			#number{opacity:0.2;
+				text-align: center;
+				font-size: 160px;
+				position: absolute;
+				z-index: 100;
+				top:40%;
+				left: 50%;
+				transform:translateX(-50%);
+				height: 200px;
+				width: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="number">44</div>
+		<div id="center">
+			<div id="one" class="locus"></div>
+			<div id="two" class="locus"></div>
+			<div id="thire" class="locus"></div>
+			<div id="four" class="locus"></div>
+			<div id="five" class="locus"></div>
+		</div>
+		
+	</body>
+	<script type="text/javascript">
+		window.onload = ()=>{
+			let i = 0;
+			let loser = 0;
+			let number = document.getElementById('number')
+			let one = document.getElementById('one');
+			let two = document.getElementById('two');
+			let thire = document.getElementById('thire');
+			let four = document.getElementById('four');
+			let five = document.getElementById('five');
+			let locusArr = [one, two, thire, four, five];
+			let colorArr = ['#FFB6C1','#FFFFFF','#DB7093','#FF69B4','#EE82EE','#FFFFFF','#0000CD'];
+			let parent = document.getElementById('center');
+			class Node{
+				constructor(){
+					this.createSelf(this.left);
+				}
+				
+				createSelf(){
+					let top = -250;
+					let locusNo = Math.floor(Math.random()*5);
+					let colorNo = Math.floor(Math.random()*7);
+					let self = document.createElement('div');
+					self.style.backgroundColor = colorArr[colorNo];
+					self.className = "child";
+					locusArr[locusNo].appendChild(self);
+					self.addEventListener('click',()=>{
+						
+						if(self.style.backgroundColor == 'rgb(255, 255, 255)'){
+							i = 0;
+							number.innerHTML = i;
+							alert('boom!!!');
+							locusArr[locusNo].removeChild(self);
+							locusArr.forEach((locus)=>{
+								
+								let childs = locus.childNodes;
+								
+								for(var i = childs.length - 1; i >= 0; i--) {
+								  locus.removeChild(childs[i]);
+								}
+								
+							});
+						}else{
+							locusArr[locusNo].removeChild(self);
+							i++;
+							number.innerHTML = i;
+						}
+					});
+					setInterval(()=>{
+						top = top + 30;
+						self.style.marginTop = top + 'px';
+						if(top > 1500){
+							locusArr[locusNo].removeChild(self);
+							if(self.style.backgroundColor != 'rgb(255, 255, 255)'){
+								loser++;
+							}
+							if(loser > 2000){
+								i = 0;
+								number.innerHTML = i;
+								alert('boom!!!');
+							}
+						}
+					},100)
+				}
+				
+				
+			}
+			number.innerHTML = i;
+			var time01 = setInterval(()=>{
+				let ch = new Node();
+				if(i > 5){
+					 clearInterval(time01);
+					 var time02 = setInterval(()=>{
+						let ch = new Node();
+						if(i > 10){
+							 clearInterval(time02);
+							 var time03 = setInterval(()=>{
+								let ch = new Node();
+							 },400)
+						}
+					 },600)
+				}
+			},1300)
+			
+		}
+	</script>
+</html>
